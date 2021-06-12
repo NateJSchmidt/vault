@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+    vault:
+        image: vault:1.7.2
+        ports:
+            - "8200:8200"
+        entrypoint: vault server -config=/vault/config/conf.hcl
+        restart: on-failure
+        volumes: 
+            - "./config:/vault/config"
+            - "./data:/data"
+            - "./certs:/etc/certs"
